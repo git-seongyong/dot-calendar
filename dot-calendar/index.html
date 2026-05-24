@@ -1,15 +1,12 @@
-```html
 <!DOCTYPE html>
 <html class="dark" lang="ko">
 <head>
     <meta charset="utf-8"/>
-    <!-- 모바일 전체 화면 및 노치 대응, 줌 방지 설정 -->
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="theme-color" content="#0a0a0a">
     
-    <!-- PWA 매니페스트 및 iOS 홈 화면 아이콘 연결 -->
     <link rel="manifest" href="./manifest.json">
     <link rel="apple-touch-icon" href="icon-192.png">
     
@@ -225,45 +222,35 @@
     </style>
 </head>
 <body class="font-sans antialiased select-none theme-win" id="body-root">
-    <!-- 메인 레이아웃: 모바일 화면에 한눈에 안착하도록 컴팩트 패딩 설정 -->
     <main class="flex-1 flex flex-col items-center justify-between px-4 xs:px-5 py-2 md:py-3 overflow-hidden max-w-2xl mx-auto w-full h-full">
         
-        <!-- 상단 컨트롤 헤더 영역 (시각적 위계감을 대폭 개선한 최종 그리드) -->
         <header id="standard-header" class="w-full text-center flex flex-col items-center justify-center py-0 shrink-0">
             <div class="bg-transparent border-none rounded-xl px-1 py-1 w-full h-[75px] flex items-center justify-between gap-2 transition-all duration-300" id="dashboard-card">
                 
-                <!-- 좌측 정돈 영역: 시점 명시(Pre-Header)와 굵고 깨끗한 기준 날짜 배치 -->
                 <div class="flex flex-col items-start justify-center min-w-0 flex-1">
-                    <!-- 서브타이틀: 소형 캡션 형태의 위계 확보 -->
                     <p class="font-mono text-[9px] font-bold tracking-widest uppercase text-neutral-500 min-h-[13px] transition-colors text-left" id="dashboard-subtitle">TODAY</p>
                     <div class="flex items-center justify-start mt-0.5 w-full shrink-0">
                         <span class="font-sans text-2xl xs:text-3xl font-black text-white select-none transition-all duration-200 tracking-tight" id="year-label">2026.05.24.</span>
                     </div>
                 </div>
 
-                <!-- 우측 제어 영역: 기능형 스위치 및 프리미엄 알약형 진행률 배지 배치 -->
                 <div class="flex flex-col items-end justify-center gap-1.5 shrink-0 select-none">
-                    <!-- 테마 스위치: 간결한 마감 형태의 둥근 라인 칩 -->
                     <button id="theme-btn" onclick="toggleTheme()" class="flex items-center justify-center gap-1 px-2 py-0.5 border rounded-full active:scale-95 transition-all text-neutral-400 hover:text-white" title="테마 변경">
                         <span class="inline-block w-1.5 h-1.5 rounded-full shrink-0" id="theme-btn-dot"></span>
                         <span class="font-mono text-[8px] font-bold tracking-wider select-none leading-none" id="theme-btn-text">BLUE</span>
                     </button>
 
-                    <!-- % 진행률 알약형 배지 (수치와 진행 모드를 정교한 세로선으로 완벽 가이드) -->
                     <div onclick="toggleProgressMode()" class="flex items-center gap-2 bg-neutral-900/80 border border-neutral-800/80 px-2.5 py-1.5 rounded-full cursor-pointer hover:bg-neutral-800/50 active:scale-98 transition-all select-none h-[28px]" id="metric-box" title="클릭하여 남은 비율 보기">
                         <span class="font-sans text-xs xs:text-sm font-extrabold text-white transition-colors tracking-tight leading-none" id="progress-percent">00%</span>
-                        <span class="w-[1px] h-2.5 bg-neutral-800 transition-colors" id="progress-divider"></span> <!-- 세로 구분선 -->
-                        <span class="font-mono text-[8px] text-neutral-400 font-bold uppercase transition-colors tracking-wider leading-none shrink-0" id="progress-suffix">Passed</span>
+                        <span class="w-[1px] h-2.5 bg-neutral-800 transition-colors" id="progress-divider"></span> <span class="font-mono text-[8px] text-neutral-400 font-bold uppercase transition-colors tracking-wider leading-none shrink-0" id="progress-suffix">Passed</span>
                     </div>
                 </div>
                 
             </div>
         </header>
 
-        <!-- 컴팩트한 연간 달력 그리드 영역 -->
         <section class="w-full flex-1 overflow-hidden py-0.5" id="main-view-section">
-            <!-- 자바스크립트로 달력이 동적 렌더링 됨 -->
-        </section>
+            </section>
 
     </main>
 
@@ -290,7 +277,7 @@
         let displayProgressMode = 'passed';
         let defaultPercentageText = "00";
         let defaultYearText = "2026.05.24.";
-        let defaultSubtitleText = "TODAY"; // 기본 서브타이틀 TODAY로 고정
+        let defaultSubtitleText = "TODAY"; 
         let defaultSuffixText = "Passed";
         let currentTheme = 'win';
 
@@ -343,7 +330,6 @@
             return (num === 100 || num === 0) ? num.toString() : num.toFixed(1);
         }
 
-        // 도트 임시 집중 모드 시 호버 대상 이외 도트 불투명도 조절
         function dimOtherDots(targetElement) {
             const allDots = mainViewSection.querySelectorAll('.dot:not(.empty-dot)');
             allDots.forEach(dot => { if (dot !== targetElement) dot.classList.add('dimmed'); });
@@ -357,7 +343,6 @@
             });
         }
 
-        // [도트 터치 시 시각적 위계 피드백 연동 설계]
         function triggerTemporaryFocus(targetDot, dateStr, dayIndex, percent) {
             if (restoreTimer) clearTimeout(restoreTimer);
             if (activeFocusedDot) activeFocusedDot.classList.remove('touch-hovering');
@@ -372,12 +357,10 @@
             let displayPercent = (displayProgressMode === 'remaining') ? 100 - numericPercent : numericPercent;
             let focusSuffix = (displayProgressMode === 'remaining') ? "Remaining" : "Passed";
 
-            // 좌측 서브타이틀을 현재 날짜 정보에 맞춰 세련되게 전환
             dashboardSubtitle.textContent = `DAY OF YEAR: ${dayIndex}`;
             const focusTextColorClass = getThemeTextClass();
             dashboardSubtitle.className = `font-mono text-[9px] font-bold tracking-widest uppercase truncate min-h-[13px] transition-colors text-left ${focusTextColorClass}`;
             
-            // 날짜 및 퍼센트 정보 동기화
             yearLabel.textContent = dateStr;
             progressPercent.textContent = `${formatPercent(displayPercent)}%`;
             progressPercent.className = `font-sans text-xs xs:text-sm font-extrabold tracking-tight transition-colors ${focusTextColorClass} leading-none`;
@@ -385,7 +368,6 @@
             progressSuffix.textContent = focusSuffix;
             progressSuffix.className = `font-mono text-[8px] font-bold uppercase transition-colors tracking-wider shrink-0 ${focusTextColorClass} leading-none`;
 
-            // 우측 알약 배지 테두리 및 배경을 테마 색상으로 발광 피드백 연동
             const pillBorderColor = (currentTheme === 'mac') ? 'border-[#ff9f0a]/60' : 'border-[#60cdff]/60';
             const pillBgColor = (currentTheme === 'mac') ? 'bg-[#ff9f0a]/10' : 'bg-[#60cdff]/10';
             const dividerBgColor = (currentTheme === 'mac') ? 'bg-[#ff9f0a]/30' : 'bg-[#60cdff]/30';
@@ -396,22 +378,20 @@
             restoreTimer = setTimeout(restoreDefaultDisplay, 2000);
         }
 
-        // 원래 대시보드 상태로 원복
         function restoreDefaultDisplay() {
             undimAllDots();
             if (activeFocusedDot) {
+                // 강조 및 후광 상태 클래스를 완벽히 제거하여 2초 뒤 확대 잔상 버그 해결
                 activeFocusedDot.classList.remove('touch-hovering');
                 activeFocusedDot = null;
             }
             activeFocusedDotData = null;
 
-            // 좌측 타이포그래피 복원
             dashboardSubtitle.textContent = defaultSubtitleText;
             dashboardSubtitle.className = "font-mono text-[9px] text-neutral-500 font-bold tracking-widest uppercase truncate min-h-[13px] transition-colors text-left";
 
             yearLabel.textContent = defaultYearText;
             
-            // 우측 알약 배지 복원
             progressPercent.textContent = `${defaultPercentageText}%`;
             progressPercent.className = "font-sans text-xs xs:text-sm font-extrabold tracking-tight text-white transition-colors leading-none";
             
@@ -432,7 +412,6 @@
             }
         }
 
-        // 날짜 레이블 또는 알약 배지를 누르면 유연하게 Passed <-> Remaining 간의 전환 가동
         yearLabel.addEventListener('click', toggleProgressMode);
 
         function updateDashboard() {
@@ -557,5 +536,3 @@
     </script>
 </body>
 </html>
-
-```
