@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html class="dark" lang="ko">
 <head>
@@ -65,15 +66,15 @@
             gap: 10px; /* 미세 간격 축소로 집약도 상승 */
             width: 100%;
             height: 100%;
-            max-height: calc(100vh - 165px) !important; /* 상단 헤더 영역 공간을 제외한 내부 영역 완벽 고정 */
-            max-height: calc(100svh - 165px) !important;
+            max-height: calc(100vh - 125px) !important; /* 헤더 공간을 줄이고 달력 가용 공간 확보 */
+            max-height: calc(100svh - 125px) !important;
             transition: max-height 0.3s ease;
-            overflow: hidden !important; /* 내부 내용물에 의한 스크롤 방지 */
+            overflow: hidden !important;
         }
 
         /* 월별 카드 스타일 */
         .month-container {
-            border-radius: 8px;
+            border-radius: 6px;
             padding: 8px 10px; /* 도트 크기 확대에 따라 내부 여백 고안 */
             display: flex;
             flex-direction: column;
@@ -85,34 +86,27 @@
 
         /* [윈도우 다크 테마 계산기 스타일] */
         .theme-win {
-            background-color: #1f1f1f !important;
+            background-color: #121212 !important; /* 조금 더 깊은 다크 모드로 변경 */
         }
         .theme-win .month-container {
-            background-color: #2b2b2b;
-            border: 1px solid #323232;
+            background-color: #1a1a1a;
+            border: 1px solid #242424;
         }
-        /* 다른 비활성 월 호버 시: 슬레이트 그레이 계열의 차분한 테두리만 조용히 강조 */
         .theme-win .month-container:hover {
-            border-color: #555555;
-            background-color: #2b2b2b;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+            border-color: #444444;
+            background-color: #1a1a1a;
         }
-        /* 활성 월 강조: 네온 블루 보더라인 및 글로우 발광 효과 극대화 */
+        /* 활성 월 강조: 네온 블루 보더라인 및 은은한 글로우 */
         .theme-win .month-container.active-month {
-            border: 2px solid #60cdff;
+            border: 1.5px solid #60cdff;
             background-color: transparent !important;
-            box-shadow: 0 0 18px 2px rgba(96, 205, 255, 0.45);
-        }
-        .theme-win .month-container.active-month:hover {
-            border-color: #92e0ff;
-            box-shadow: 0 0 24px 4px rgba(96, 205, 255, 0.6);
-            background-color: transparent !important;
+            box-shadow: 0 0 12px rgba(96, 205, 255, 0.25);
         }
         .theme-win .past-dot { 
             background-color: #ffffff !important; 
         }
         .theme-win .future-dot { 
-            background-color: #3b3b3b !important; 
+            background-color: #2a2a2a !important; /* 미래 도트 명도 낮춤 */
         }
         .theme-win .pulse-active {
             animation: pulse-blue 2s infinite;
@@ -120,8 +114,8 @@
             z-index: 5;
         }
         .theme-win #theme-btn {
-            border-color: #323232;
-            background-color: #2b2b2b;
+            border-color: #242424;
+            background-color: #1a1a1a;
         }
 
         /* [애플 계산기 테마 스타일] */
@@ -129,31 +123,24 @@
             background-color: #000000 !important;
         }
         .theme-mac .month-container {
-            background-color: #1c1c1e;
-            border: 1px solid #2c2c2e;
+            background-color: #101012;
+            border: 1px solid #1c1c1e;
         }
-        /* 다른 비활성 월 호버 시: 슬레이트 그레이 계열의 차분한 테두리만 조용히 강조 */
         .theme-mac .month-container:hover {
-            border-color: #48484a;
-            background-color: #1c1c1e;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+            border-color: #3a3a3c;
+            background-color: #101012;
         }
-        /* 활성 월 강조: 오피셜 오렌지 보더라인 및 글로우 발광 효과 극대화 */
+        /* 활성 월 강조: 오피셜 오렌지 보더라인 및 은은한 글로우 */
         .theme-mac .month-container.active-month {
-            border: 2px solid #ff9f0a;
+            border: 1.5px solid #ff9f0a;
             background-color: transparent !important;
-            box-shadow: 0 0 18px 2px rgba(255, 159, 10, 0.45);
-        }
-        .theme-mac .month-container.active-month:hover {
-            border-color: #ffb647;
-            box-shadow: 0 0 24px 4px rgba(255, 159, 10, 0.6);
-            background-color: transparent !important;
+            box-shadow: 0 0 12px rgba(255, 159, 10, 0.25);
         }
         .theme-mac .past-dot { 
             background-color: #ffffff !important; 
         }
         .theme-mac .future-dot { 
-            background-color: #2c2c2e !important; 
+            background-color: #202022 !important; /* 미래 도트 명도 낮춤 */
         }
         .theme-mac .pulse-active {
             animation: pulse-orange 2s infinite;
@@ -161,31 +148,24 @@
             z-index: 5;
         }
         .theme-mac #theme-btn {
-            border-color: #2c2c2e;
-            background-color: #1c1c1e;
+            border-color: #1c1c1e;
+            background-color: #101012;
         }
 
-        /* 각 카드 상단 월 문자의 폰트 사이즈를 가독성 높게 확대 */
+        /* 각 카드 상단 월 문자의 가독성 및 비율 조정 */
         .month-name {
-            font-size: 12px;
+            font-size: 10px;
             font-family: 'Space Mono', monospace;
-            color: #a0a0a0;
+            color: #888888;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.12em;
+            letter-spacing: 0.08em;
             text-align: left;
-            margin-bottom: 5px;
+            margin-bottom: 3px;
             padding-left: 2px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: color 0.3s ease;
-        }
-        
-        @media (min-width: 375px) {
-            .month-name {
-                font-size: 13px;
-            }
         }
 
         /* 6주 기준 고정 격자 */
@@ -193,7 +173,7 @@
             display: grid;
             grid-template-columns: repeat(7, 1fr);
             grid-template-rows: repeat(6, 1fr);
-            gap: 3px;
+            gap: 2.5px; /* 격자 간격 미세 조정 */
             align-items: center;
             justify-items: center;
             flex-grow: 1;
@@ -203,27 +183,26 @@
             aspect-ratio: 1 / 1;
             width: 100%;
             border-radius: 50%;
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.2s ease;
             position: relative;
             cursor: pointer;
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* 도트 크기를 최대 10px로 선명하게 확대 */
+        /* 과도하게 커지던 도트의 최대 지름을 미니멀하게 통제 */
         .dot-grid .dot {
-            max-width: 10px; 
+            max-width: 7px; 
         }
 
         .dot:not(.empty-dot):hover, .dot:not(.empty-dot).touch-hovering {
-            transform: scale(1.4);
+            transform: scale(1.3);
             z-index: 10;
-            box-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
             opacity: 1.0 !important;
         }
 
         .dot.dimmed {
-            opacity: 0.25;
-            box-shadow: none;
+            opacity: 0.2;
         }
 
         .empty-dot { 
@@ -232,85 +211,60 @@
             pointer-events: none;
         }
 
-        /* [오늘 날짜 하이라이트 애니메이션 - 블루 공통] */
+        /* 오늘 날짜 하이라이트 애니메이션 */
         @keyframes pulse-blue {
-            0% { 
-                box-shadow: 0 0 0 0 rgba(96, 205, 255, 0.8);
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.3);
-            }
-            70% { 
-                box-shadow: 0 0 0 6px rgba(96, 205, 255, 0); 
-            }
-            100% { 
-                box-shadow: 0 0 0 0 rgba(96, 205, 255, 0); 
-                transform: scale(1);
-            }
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(96, 205, 255, 0.6); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); box-shadow: 0 0 0 4px rgba(96, 205, 255, 0); }
         }
-
-        /* [오늘 날짜 하이라이트 애니메이션 - 오렌지 맥] */
         @keyframes pulse-orange {
-            0% { 
-                box-shadow: 0 0 0 0 rgba(255, 159, 10, 0.8);
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.3);
-            }
-            70% { 
-                box-shadow: 0 0 0 6px rgba(255, 159, 10, 0); 
-            }
-            100% { 
-                box-shadow: 0 0 0 0 rgba(255, 159, 10, 0); 
-                transform: scale(1);
-            }
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 159, 10, 0.6); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); box-shadow: 0 0 0 4px rgba(255, 159, 10, 0); }
         }
     </style>
 </head>
 <body class="font-sans antialiased select-none theme-win" id="body-root">
-    <!-- 메인 레이아웃: 최대 가로 폭을 max-w-3xl(768px)로 확장하여 넉넉하고 시원한 기기 대응 -->
-    <main class="flex-1 flex flex-col items-center justify-between px-4 xs:px-6 py-3 md:py-4 overflow-hidden max-w-3xl mx-auto w-full h-full">
+    <!-- 메인 레이아웃: 모바일 화면에 한눈에 안착하도록 컴팩트 패딩 설정 -->
+    <main class="flex-1 flex flex-col items-center justify-between px-4 xs:px-5 py-2 md:py-3 overflow-hidden max-w-2xl mx-auto w-full h-full">
         
-        <!-- 상단 컨트롤 헤더 영역 -->
+        <!-- 상단 컨트롤 헤더 영역 (시각적 위계감을 대폭 개선한 최종 그리드) -->
         <header id="standard-header" class="w-full text-center flex flex-col items-center justify-center py-0 shrink-0">
-            <div class="bg-transparent border-none rounded-xl px-1 xs:px-2 py-2 w-full h-[135px] flex items-center justify-between gap-1 xs:gap-3 transition-all duration-300" id="dashboard-card">
-                <!-- 좌측 실시간 YYYY.MM.DD. 날짜 디스플레이 -->
+            <div class="bg-transparent border-none rounded-xl px-1 py-1 w-full h-[75px] flex items-center justify-between gap-2 transition-all duration-300" id="dashboard-card">
+                
+                <!-- 좌측 정돈 영역: 시점 명시(Pre-Header)와 굵고 깨끗한 기준 날짜 배치 -->
                 <div class="flex flex-col items-start justify-center min-w-0 flex-1">
-                    <!-- 서브타이틀 영역: 좌측 정렬 -->
-                    <p class="font-mono text-[9px] font-bold tracking-widest uppercase truncate min-h-[13px] transition-colors text-left" id="dashboard-subtitle"></p>
-                    
-                    <div class="flex items-center justify-start mt-1 w-full h-[40px] xs:h-[48px] sm:h-[56px] shrink-0">
-                        <span class="font-sans text-3xl xs:text-4xl sm:text-5xl font-black text-white select-none transition-all duration-200 shrink-0 w-[185px] xs:w-[220px] sm:w-[280px] text-left tracking-tighter inline-block truncate" id="year-label">2026.05.24.</span>
+                    <!-- 서브타이틀: 소형 캡션 형태의 위계 확보 -->
+                    <p class="font-mono text-[9px] font-bold tracking-widest uppercase text-neutral-500 min-h-[13px] transition-colors text-left" id="dashboard-subtitle">TODAY</p>
+                    <div class="flex items-center justify-start mt-0.5 w-full shrink-0">
+                        <span class="font-sans text-2xl xs:text-3xl font-black text-white select-none transition-all duration-200 tracking-tight" id="year-label">2026.05.24.</span>
                     </div>
                 </div>
 
-                <!-- 우측 제어 및 표시판 그룹 (테마 선택 버튼이 % 메트릭 박스 수직 위에 정렬됨) -->
-                <div class="flex flex-col items-end justify-center gap-2 shrink-0 select-none">
-                    <!-- 테마 스위치 -->
-                    <button id="theme-btn" onclick="toggleTheme()" class="flex items-center justify-center gap-1.5 px-2.5 py-1 border rounded-full active:scale-95 transition-all text-neutral-400 hover:text-white" title="테마 변경">
+                <!-- 우측 제어 영역: 기능형 스위치 및 프리미엄 알약형 진행률 배지 배치 -->
+                <div class="flex flex-col items-end justify-center gap-1.5 shrink-0 select-none">
+                    <!-- 테마 스위치: 간결한 마감 형태의 둥근 라인 칩 -->
+                    <button id="theme-btn" onclick="toggleTheme()" class="flex items-center justify-center gap-1 px-2 py-0.5 border rounded-full active:scale-95 transition-all text-neutral-400 hover:text-white" title="테마 변경">
                         <span class="inline-block w-1.5 h-1.5 rounded-full shrink-0" id="theme-btn-dot"></span>
                         <span class="font-mono text-[8px] font-bold tracking-wider select-none leading-none" id="theme-btn-text">BLUE</span>
                     </button>
 
-                    <!-- % 진행도 메트릭 박스 -->
-                    <div onclick="toggleProgressMode()" class="flex flex-col items-end justify-center bg-transparent hover:bg-white/5 px-2 xs:px-4 py-2 rounded-xl transition-all duration-300 cursor-pointer text-right select-none w-[135px] xs:w-[155px] sm:w-[180px] h-[54px]" id="metric-box" title="클릭하여 남은 비율 보기">
-                        <div class="flex items-baseline justify-end gap-1 xs:gap-2 w-full">
-                            <span class="font-sans text-2xl xs:text-3xl font-black tracking-tight text-white transition-colors" id="progress-percent">00%</span>
-                            <span class="font-mono text-[8px] xs:text-[9px] sm:text-[10px] text-neutral-400 font-bold uppercase transition-colors shrink-0" id="progress-suffix">Passed</span>
-                        </div>
+                    <!-- % 진행률 알약형 배지 (수치와 진행 모드를 정교한 세로선으로 완벽 가이드) -->
+                    <div onclick="toggleProgressMode()" class="flex items-center gap-2 bg-neutral-900/80 border border-neutral-800/80 px-2.5 py-1.5 rounded-full cursor-pointer hover:bg-neutral-800/50 active:scale-98 transition-all select-none h-[28px]" id="metric-box" title="클릭하여 남은 비율 보기">
+                        <span class="font-sans text-xs xs:text-sm font-extrabold text-white transition-colors tracking-tight leading-none" id="progress-percent">00%</span>
+                        <span class="w-[1px] h-2.5 bg-neutral-800 transition-colors" id="progress-divider"></span> <!-- 세로 구분선 -->
+                        <span class="font-mono text-[8px] text-neutral-400 font-bold uppercase transition-colors tracking-wider leading-none shrink-0" id="progress-suffix">Passed</span>
                     </div>
                 </div>
+                
             </div>
         </header>
 
         <!-- 컴팩트한 연간 달력 그리드 영역 -->
-        <section class="w-full flex-1 overflow-hidden py-1" id="main-view-section">
+        <section class="w-full flex-1 overflow-hidden py-0.5" id="main-view-section">
             <!-- 자바스크립트로 달력이 동적 렌더링 됨 -->
         </section>
 
-        <!-- 하단은 완벽한 여백 처리 -->
     </main>
 
     <script>
@@ -322,37 +276,28 @@
         const dashboardSubtitle = document.getElementById('dashboard-subtitle');
         const dashboardCard = document.getElementById('dashboard-card');
         const metricBox = document.getElementById('metric-box');
+        const progressDivider = document.getElementById('progress-divider');
         const themeBtnDot = document.getElementById('theme-btn-dot');
         const themeBtnText = document.getElementById('theme-btn-text');
         const themeBtn = document.getElementById('theme-btn');
 
         const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-        // 실시간 실제 시스템 기준일 설정 (오늘 날짜)
         const actualToday = new Date();
         const actualYear = actualToday.getFullYear();
-
-        // 사용자가 현재 보고 있는 연도 상태값 (현재 연도로 영구 고정)
         const displayedYear = actualYear;
 
-        // 백분율 노출 모드 상태관리 ('passed' = 지나온 시간, 'remaining' = 남은 시간)
         let displayProgressMode = 'passed';
-
-        // 대시보드 기본 연간 진행률 수치 캐싱을 위한 변수
         let defaultPercentageText = "00";
         let defaultYearText = "2026.05.24.";
-        let defaultSubtitleText = ""; 
+        let defaultSubtitleText = "TODAY"; // 기본 서브타이틀 TODAY로 고정
         let defaultSuffixText = "Passed";
-
-        // OS 테마 적용 상태저장 ('win' = 파랑, 'mac' = 주황)
         let currentTheme = 'win';
 
-        // 터치/클릭 활성화 시 임시 홀딩 타이머 및 대상 도트 캐싱 데이터
         let restoreTimer = null;
         let activeFocusedDot = null;
         let activeFocusedDotData = null;
 
-        // 날짜를 YYYY.MM.DD. 형태의 문자열로 변환하는 유틸 함수
         function formatDateToString(date) {
             const yyyy = date.getFullYear();
             const mm = String(date.getMonth() + 1).padStart(2, '0');
@@ -360,49 +305,32 @@
             return `${yyyy}.${mm}.${dd}.`;
         }
 
-        // [테마 변경에 따른 고정 텍스트 컬러 유틸리티]
         function getThemeTextClass() {
             return (currentTheme === 'mac') ? 'text-[#ff9f0a]' : 'text-[#60cdff]';
         }
 
-        // [수동 테마 세팅 및 제어 함수]
         function setTheme(themeName) {
             currentTheme = themeName;
-            
-            // 기존 클래스 제거
             bodyRoot.classList.remove('theme-win', 'theme-mac');
             
             if (themeName === 'mac') {
                 bodyRoot.classList.add('theme-mac');
-                
-                // 테마 전용 표시 장치 및 인라인 배지 동기화 (애플 계산기 테마 주황색 코드 #ff9f0a)
                 themeBtnDot.className = "inline-block w-1.5 h-1.5 rounded-full bg-[#ff9f0a] shrink-0";
                 themeBtnText.textContent = "ORANGE";
-                
-                // 계산기 레이블과 조율된 둥근 엣지 스위치 테두리 매핑
-                themeBtn.className = "flex items-center justify-center gap-1.5 px-2.5 py-1 border border-[#2c2c2e] bg-[#1c1c1e] hover:bg-[#2c2c2e] rounded-full active:scale-95 transition-all text-neutral-400 hover:text-white";
+                themeBtn.className = "flex items-center justify-center gap-1 px-2 py-0.5 border border-[#1c1c1e] bg-[#101012] hover:bg-[#1c1c1e] rounded-full active:scale-95 transition-all text-neutral-400 hover:text-white";
             } else {
                 bodyRoot.classList.add('theme-win');
-                
-                // 테마 전용 표시 장치 및 인라인 배지 동기화 (윈도우 다크 계산기 테마 네온 블루 코드 #60cdff)
                 themeBtnDot.className = "inline-block w-1.5 h-1.5 rounded-full bg-[#60cdff] shrink-0";
                 themeBtnText.textContent = "BLUE";
-                
-                // 계산기 레이블과 조율된 둥근 엣지 스위치 테두리 매핑
-                themeBtn.className = "flex items-center justify-center gap-1.5 px-3 py-1 border border-[#323232] bg-[#2b2b2b] hover:bg-[#323232] rounded-full active:scale-95 transition-all text-neutral-400 hover:text-white";
+                themeBtn.className = "flex items-center justify-center gap-1 px-2 py-0.5 border border-[#242424] bg-[#1a1a1a] hover:bg-[#242424] rounded-full active:scale-95 transition-all text-neutral-400 hover:text-white";
             }
-            
-            // 바뀐 테마로 대시보드 리렌더링
             updateDashboard();
         }
 
-        // 수동 테마 변경 트리거 함수
         function toggleTheme() {
-            const nextTheme = (currentTheme === 'win') ? 'mac' : 'win';
-            setTheme(nextTheme);
+            setTheme(currentTheme === 'win' ? 'mac' : 'win');
         }
 
-        // [기기 자동 감지 기능 - 최초 로딩 시 기본값 지정용]
         function detectOSAndApplyTheme() {
             const platform = navigator.platform || '';
             const userAgent = navigator.userAgent || '';
@@ -410,26 +338,17 @@
             setTheme(isApple ? 'mac' : 'win');
         }
 
-        // 소수점 렌더링 포맷터 (마지막 날이거나 100% / 0%일 경우 소수점 제거)
         function formatPercent(value) {
             const num = parseFloat(value);
-            if (num === 100 || num === 0) {
-                return num.toString();
-            }
-            return num.toFixed(1);
+            return (num === 100 || num === 0) ? num.toString() : num.toFixed(1);
         }
 
-        // [도트 딤 처리 헬퍼] 호버나 포커스 시 타깃 외 도트 흐리게
+        // 도트 임시 집중 모드 시 호버 대상 이외 도트 불투명도 조절
         function dimOtherDots(targetElement) {
             const allDots = mainViewSection.querySelectorAll('.dot:not(.empty-dot)');
-            allDots.forEach(dot => {
-                if (dot !== targetElement) {
-                    dot.classList.add('dimmed');
-                }
-            });
+            allDots.forEach(dot => { if (dot !== targetElement) dot.classList.add('dimmed'); });
         }
 
-        // [도트 딤 복귀 헬퍼] 복원
         function undimAllDots() {
             const allDots = mainViewSection.querySelectorAll('.dot:not(.empty-dot)');
             allDots.forEach(dot => {
@@ -438,66 +357,46 @@
             });
         }
 
-        // [일시적 날짜 활성화 트리거 함수 (2초 타이머 탑재)]
+        // [도트 터치 시 시각적 위계 피드백 연동 설계]
         function triggerTemporaryFocus(targetDot, dateStr, dayIndex, percent) {
-            if (restoreTimer) {
-                clearTimeout(restoreTimer);
-            }
-
-            if (activeFocusedDot) {
-                activeFocusedDot.classList.remove('touch-hovering');
-            }
+            if (restoreTimer) clearTimeout(restoreTimer);
+            if (activeFocusedDot) activeFocusedDot.classList.remove('touch-hovering');
 
             activeFocusedDot = targetDot;
             targetDot.classList.add('touch-hovering');
-            
             activeFocusedDotData = { targetDot, dateStr, dayIndex, percent };
             
             dimOtherDots(targetDot);
 
             const numericPercent = parseFloat(percent);
-            let displayPercent = numericPercent;
-            let focusSuffix = "Passed";
+            let displayPercent = (displayProgressMode === 'remaining') ? 100 - numericPercent : numericPercent;
+            let focusSuffix = (displayProgressMode === 'remaining') ? "Remaining" : "Passed";
 
-            if (displayProgressMode === 'remaining') {
-                displayPercent = 100 - numericPercent;
-                focusSuffix = "Remaining";
-            }
-
-            const formattedPercentString = `${formatPercent(displayPercent)}%`;
-
-            // 탐색 모드 대시보드 업데이트
+            // 좌측 서브타이틀을 현재 날짜 정보에 맞춰 세련되게 전환
             dashboardSubtitle.textContent = `DAY OF YEAR: ${dayIndex}`;
-            
-            const focusTextColorClass = (currentTheme === 'mac') ? 'text-[#ff9f0a]' : 'text-[#60cdff]';
-            const focusYearColorClass = (currentTheme === 'mac') ? 'text-[#ff9f0a]' : 'text-[#60cdff]';
-            
+            const focusTextColorClass = getThemeTextClass();
             dashboardSubtitle.className = `font-mono text-[9px] font-bold tracking-widest uppercase truncate min-h-[13px] transition-colors text-left ${focusTextColorClass}`;
             
-            // yearLabel의 레이아웃 가로 폭을 완벽하게 고정하여 레이아웃 밀림 방지
+            // 날짜 및 퍼센트 정보 동기화
             yearLabel.textContent = dateStr;
-            yearLabel.className = `font-sans text-xl xs:text-2xl sm:text-3xl font-black select-none transition-all duration-200 shrink-0 w-[185px] xs:w-[220px] sm:w-[280px] text-left tracking-tight inline-block truncate ${focusYearColorClass}`;
-            
-            progressPercent.textContent = formattedPercentString;
-            progressPercent.className = `font-sans text-2xl xs:text-3xl font-black tracking-tight transition-colors ${focusTextColorClass}`;
+            progressPercent.textContent = `${formatPercent(displayPercent)}%`;
+            progressPercent.className = `font-sans text-xs xs:text-sm font-extrabold tracking-tight transition-colors ${focusTextColorClass} leading-none`;
             
             progressSuffix.textContent = focusSuffix;
-            progressSuffix.className = `font-mono text-[9px] xs:text-[10px] text-neutral-400 font-bold uppercase transition-colors ${focusTextColorClass}`;
+            progressSuffix.className = `font-mono text-[8px] font-bold uppercase transition-colors tracking-wider shrink-0 ${focusTextColorClass} leading-none`;
 
-            const cardBorderClass = (currentTheme === 'mac') ? 'border-orange-500/20' : 'border-blue-500/20';
-            const cardBgClass = (currentTheme === 'mac') ? 'bg-orange-950/5' : 'bg-blue-950/5';
-            const metricBorderClass = (currentTheme === 'mac') ? 'border-[#ff9f0a]/30' : 'border-[#60cdff]/30';
-            const metricBgClass = (currentTheme === 'mac') ? 'bg-[#ff9f0a]/5' : 'bg-[#60cdff]/5';
+            // 우측 알약 배지 테두리 및 배경을 테마 색상으로 발광 피드백 연동
+            const pillBorderColor = (currentTheme === 'mac') ? 'border-[#ff9f0a]/60' : 'border-[#60cdff]/60';
+            const pillBgColor = (currentTheme === 'mac') ? 'bg-[#ff9f0a]/10' : 'bg-[#60cdff]/10';
+            const dividerBgColor = (currentTheme === 'mac') ? 'bg-[#ff9f0a]/30' : 'bg-[#60cdff]/30';
 
-            dashboardCard.className = `bg-transparent border-none rounded-xl px-1 xs:px-2 py-3 w-full h-[135px] flex items-center justify-between gap-1 xs:gap-3 transition-all duration-300 ${cardBorderClass} ${cardBgClass}`;
-            metricBox.className = `flex flex-col items-end justify-center bg-black/25 hover:bg-black/40 px-2 xs:px-4 py-2 rounded-xl border w-[135px] xs:w-[155px] sm:w-[180px] h-[54px] transition-all duration-300 shrink-0 cursor-pointer text-right select-none ${metricBorderClass} ${metricBgClass}`;
+            metricBox.className = `flex items-center gap-2 border px-2.5 py-1.5 rounded-full cursor-pointer transition-all select-none h-[28px] ${pillBorderColor} ${pillBgColor}`;
+            progressDivider.className = `w-[1px] h-2.5 transition-colors ${dividerBgColor}`;
 
-            restoreTimer = setTimeout(() => {
-                restoreDefaultDisplay();
-            }, 2000);
+            restoreTimer = setTimeout(restoreDefaultDisplay, 2000);
         }
 
-        // [기기 표준 원복 함수]
+        // 원래 대시보드 상태로 원복
         function restoreDefaultDisplay() {
             undimAllDots();
             if (activeFocusedDot) {
@@ -506,28 +405,25 @@
             }
             activeFocusedDotData = null;
 
+            // 좌측 타이포그래피 복원
             dashboardSubtitle.textContent = defaultSubtitleText;
-            dashboardSubtitle.className = "font-mono text-[9px] text-neutral-400 font-bold tracking-widest uppercase truncate min-h-[13px] transition-colors text-left";
+            dashboardSubtitle.className = "font-mono text-[9px] text-neutral-500 font-bold tracking-widest uppercase truncate min-h-[13px] transition-colors text-left";
 
-            // 원래의 YYYY.MM.DD. 오늘 날짜로 복구하면서 레이아웃 정대칭 고정
             yearLabel.textContent = defaultYearText;
-            yearLabel.className = "font-sans text-2xl xs:text-3xl sm:text-4xl font-black text-white select-none transition-all duration-200 shrink-0 w-[185px] xs:w-[220px] sm:w-[280px] text-left tracking-tighter inline-block truncate";
-
+            
+            // 우측 알약 배지 복원
             progressPercent.textContent = `${defaultPercentageText}%`;
-            progressPercent.className = "font-sans text-2xl xs:text-3xl font-black tracking-tight text-primary transition-colors";
-
+            progressPercent.className = "font-sans text-xs xs:text-sm font-extrabold tracking-tight text-white transition-colors leading-none";
+            
             progressSuffix.textContent = defaultSuffixText;
-            progressSuffix.className = "font-mono text-[9px] xs:text-[10px] text-neutral-400 font-bold uppercase transition-colors";
+            progressSuffix.className = "font-mono text-[8px] text-neutral-400 font-bold uppercase transition-colors tracking-wider shrink-0 leading-none";
 
-            // 복구 시에도 고정 높이(h-[135px]) 및 투명 레이아웃 속성 철저히 보존
-            dashboardCard.className = "bg-transparent border-none rounded-xl px-1 xs:px-2 py-3 w-full h-[135px] flex items-center justify-between gap-1 xs:gap-3 transition-all duration-300";
-            metricBox.className = "flex flex-col items-end justify-center bg-black/25 hover:bg-white/5 px-2 xs:px-4 py-2 rounded-xl border border-white/5 w-[135px] xs:w-[155px] sm:w-[180px] h-[54px] transition-all duration-300 shrink-0 cursor-pointer text-right select-none";
+            metricBox.className = "flex items-center gap-2 bg-neutral-900/80 border border-neutral-800/80 px-2.5 py-1.5 rounded-full cursor-pointer hover:bg-neutral-800/50 active:scale-98 transition-all select-none h-[28px]";
+            progressDivider.className = "w-[1px] h-2.5 bg-neutral-800 transition-colors";
         }
 
-        // Passed < modulator -> Remaining 모드 전환 토글
         function toggleProgressMode() {
             displayProgressMode = (displayProgressMode === 'passed') ? 'remaining' : 'passed';
-            
             if (activeFocusedDotData) {
                 const { targetDot, dateStr, dayIndex, percent } = activeFocusedDotData;
                 triggerTemporaryFocus(targetDot, dateStr, dayIndex, percent);
@@ -536,23 +432,21 @@
             }
         }
 
-        // 대시보드 진행률 및 수치 계산 및 데이터 캐싱
+        // 날짜 레이블 또는 알약 배지를 누르면 유연하게 Passed <-> Remaining 간의 전환 가동
+        yearLabel.addEventListener('click', toggleProgressMode);
+
         function updateDashboard() {
             const isLeap = (displayedYear % 4 === 0 && displayedYear % 100 !== 0) || (displayedYear % 400 === 0);
             const totalDays = isLeap ? 366 : 365;
 
-            // YYYY.MM.DD. 기본 날짜값 저장
             defaultYearText = formatDateToString(actualToday);
-
-            let basePassedPercentage = 0;
 
             const startOfYear = new Date(actualYear, 0, 1);
             const diff = actualToday - startOfYear;
             const dayOfYear = Math.floor(diff / (1000 * 60 * 60 * 24)) + 1;
-            basePassedPercentage = (dayOfYear / totalDays) * 100;
-            defaultSubtitleText = "";
+            const basePassedPercentage = (dayOfYear / totalDays) * 100;
+            defaultSubtitleText = "TODAY";
 
-            // 모드(Passed / Remaining) 분기 처리 및 수치 주입
             if (displayProgressMode === 'passed') {
                 defaultPercentageText = formatPercent(basePassedPercentage);
                 defaultSuffixText = "Passed";
@@ -561,23 +455,18 @@
                 defaultSuffixText = "Remaining";
             }
 
-            // 초기 대시보드 글자 적용
             yearLabel.textContent = defaultYearText;
             progressPercent.textContent = `${defaultPercentageText}%`;
             progressSuffix.textContent = defaultSuffixText;
             dashboardSubtitle.textContent = defaultSubtitleText;
 
-            if (restoreTimer) {
-                clearTimeout(restoreTimer);
-            }
+            if (restoreTimer) clearTimeout(restoreTimer);
             activeFocusedDot = null;
             activeFocusedDotData = null;
 
-            // 고정 캘린더 렌더링
             renderCalendarView();
         }
 
-        // [1] 월별 캘린더 렌더러
         function renderCalendarView() {
             mainViewSection.innerHTML = '<div class="months-grid" id="months-container"></div>';
             const monthsContainer = document.getElementById('months-container');
@@ -585,18 +474,12 @@
             const isLeap = (displayedYear % 4 === 0 && displayedYear % 100 !== 0) || (displayedYear % 400 === 0);
             const totalDays = isLeap ? 366 : 365;
             const startOfYear = new Date(displayedYear, 0, 1);
-
             const activeMonthIndex = actualToday.getMonth();
-
             const highlightTextColorClass = getThemeTextClass();
 
             for (let m = 0; m < 12; m++) {
                 const monthDiv = document.createElement('div');
-                monthDiv.classList.add('month-container');
-                
-                if (m === activeMonthIndex) {
-                    monthDiv.className = 'month-container active-month';
-                }
+                monthDiv.className = (m === activeMonthIndex) ? 'month-container active-month' : 'month-container';
                 
                 const headerDiv = document.createElement('div');
                 headerDiv.classList.add('month-name');
@@ -605,8 +488,6 @@
                 if (m === activeMonthIndex) {
                     currentMonthTitle = `${monthNames[m]} ${displayedYear}`;
                     headerDiv.classList.add(highlightTextColorClass);
-                } else {
-                    headerDiv.classList.remove(highlightTextColorClass);
                 }
 
                 headerDiv.innerHTML = `<span>${currentMonthTitle}</span>`;
@@ -618,27 +499,22 @@
                 const firstDayOfMonth = new Date(displayedYear, m, 1).getDay();
                 const daysInMonth = new Date(displayedYear, m + 1, 0).getDate();
 
-                // 1일 시작전 여백 투명 채우기
                 for (let e = 0; e < firstDayOfMonth; e++) {
                     const empty = document.createElement('div');
                     empty.className = "dot empty-dot";
                     grid.appendChild(empty);
                 }
 
-                // 실제 날짜 채우기
                 for (let d = 1; d <= daysInMonth; d++) {
                     const dot = document.createElement('div');
                     dot.className = 'dot';
-                    
                     const currentDate = new Date(displayedYear, m, d);
-                    
                     const formattedDate = `${displayedYear}.${String(m + 1).padStart(2, '0')}.${String(d).padStart(2, '0')}.`;
                     
                     const currentDiff = currentDate - startOfYear;
                     const curDayIndex = Math.floor(currentDiff / (1000 * 60 * 60 * 24)) + 1;
-                    const curPercent = ((currentDiff / (1000 * 60 * 60 * 24)) + 1) / totalDays * 100;
+                    const curPercent = (curDayIndex / totalDays) * 100;
 
-                    // 오늘 일자에 따른 도트 색상 처리
                     if (currentDate.toDateString() === actualToday.toDateString()) {
                         dot.classList.add('pulse-active');
                     } else if (currentDate < actualToday) {
@@ -648,20 +524,18 @@
                     }
 
                     const runTrigger = (e) => {
+                        e.preventDefault();
                         triggerTemporaryFocus(dot, formattedDate, curDayIndex, curPercent);
                     };
 
                     dot.addEventListener('click', runTrigger);
-                    dot.addEventListener('touchstart', runTrigger);
+                    dot.addEventListener('touchstart', runTrigger, {passive: false});
 
                     grid.appendChild(dot);
                 }
 
-                // 42칸 고정 마무리 여백 채우기
                 const filledCells = firstDayOfMonth + daysInMonth;
-                const totalTargetCells = 42; 
-                const trailingCells = totalTargetCells - filledCells;
-
+                const trailingCells = 42 - filledCells;
                 for (let t = 0; t < trailingCells; t++) {
                     const empty = document.createElement('div');
                     empty.className = "dot empty-dot";
@@ -673,17 +547,15 @@
             }
         }
 
-        // [PWA 핵심 엔진] 서비스 워커 스크립트 비동기 등록 (개발/미리보기 블롭 URL 프로토콜 예외 가드 추가)
         if ('serviceWorker' in navigator && window.location.protocol.startsWith('http')) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('./sw.js')
-                .then(reg => console.log('Service Worker Registered!', reg))
-                .catch(err => console.error('Service Worker Registration Failed!', err));
+                navigator.serviceWorker.register('./sw.js').catch(err => console.error(err));
             });
         }
 
-        // 최초 실행시 대시보드 렌더링 시작
         detectOSAndApplyTheme();
     </script>
 </body>
 </html>
+
+```
