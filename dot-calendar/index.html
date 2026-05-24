@@ -55,7 +55,7 @@
             -webkit-user-select: none;
         }
 
-        /* 1. 월별 3x4 격자 모드 (화면 늘어짐 방지를 위해 최대 높이를 칼같이 통제) */
+        /* 월별 3x4 격자 모드 (화면 늘어짐 방지를 위해 최대 높이를 칼같이 통제) */
         .months-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -69,41 +69,42 @@
             overflow: hidden !important;
         }
 
-        /* 월별 카드 스타일 */
+        /* 월별 카드 기본 스타일 */
         .month-container {
             border-radius: 6px;
-            padding: 8px 10px; /* 도트 크기 확대에 따라 내부 여백 고안 */
+            padding: 8px 10px; /* 내부 여백 */
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             box-sizing: border-box;
-            transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+            transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
             overflow: hidden;
         }
 
         /* [윈도우 다크 테마 계산기 스타일] */
         .theme-win {
-            background-color: #121212 !important; /* 조금 더 깊은 다크 모드로 변경 */
+            background-color: #121212 !important;
         }
         .theme-win .month-container {
             background-color: #1a1a1a;
             border: 1px solid #242424;
         }
-        .theme-win .month-container:hover {
-            border-color: #444444;
-            background-color: #1a1a1a;
-        }
-        /* 활성 월 강조: 네온 블루 보더라인 및 은은한 글로우 */
+        /* 일반 활성 월 보더라인 및 글로우 */
         .theme-win .month-container.active-month {
             border: 1.5px solid #60cdff;
             background-color: transparent !important;
             box-shadow: 0 0 12px rgba(96, 205, 255, 0.25);
         }
+        /* 다른 월 터치 시 활성화되는 임시 스타일 */
+        .theme-win .month-container.temp-focus-month {
+            border: 1.5px solid #60cdff !important;
+            box-shadow: 0 0 12px rgba(96, 205, 255, 0.25) !important;
+        }
         .theme-win .past-dot { 
             background-color: #ffffff !important; 
         }
         .theme-win .future-dot { 
-            background-color: #2a2a2a !important; /* 미래 도트 명도 낮춤 */
+            background-color: #2a2a2a !important; 
         }
         .theme-win .pulse-active {
             animation: pulse-blue 2s infinite;
@@ -123,21 +124,22 @@
             background-color: #101012;
             border: 1px solid #1c1c1e;
         }
-        .theme-mac .month-container:hover {
-            border-color: #3a3a3c;
-            background-color: #101012;
-        }
-        /* 활성 월 강조: 오피셜 오렌지 보더라인 및 은은한 글로우 */
+        /* 일반 활성 월 보더라인 및 글로우 */
         .theme-mac .month-container.active-month {
             border: 1.5px solid #ff9f0a;
             background-color: transparent !important;
             box-shadow: 0 0 12px rgba(255, 159, 10, 0.25);
         }
+        /* 다른 월 터치 시 활성화되는 임시 스타일 */
+        .theme-mac .month-container.temp-focus-month {
+            border: 1.5px solid #ff9f0a !important;
+            box-shadow: 0 0 12px rgba(255, 159, 10, 0.25) !important;
+        }
         .theme-mac .past-dot { 
             background-color: #ffffff !important; 
         }
         .theme-mac .future-dot { 
-            background-color: #202022 !important; /* 미래 도트 명도 낮춤 */
+            background-color: #202022 !important; 
         }
         .theme-mac .pulse-active {
             animation: pulse-orange 2s infinite;
@@ -170,7 +172,7 @@
             display: grid;
             grid-template-columns: repeat(7, 1fr);
             grid-template-rows: repeat(6, 1fr);
-            gap: 2.5px; /* 격자 간격 미세 조정 */
+            gap: 2.5px;
             align-items: center;
             justify-items: center;
             flex-grow: 1;
@@ -186,20 +188,20 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* 과도하게 커지던 도트의 최대 지름을 미니멀하게 통제 */
         .dot-grid .dot {
             max-width: 7px; 
         }
 
+        /* 터치 및 호버 시 명확한 확대 및 그림자 강조 */
         .dot:not(.empty-dot):hover, .dot:not(.empty-dot).touch-hovering {
-            transform: scale(1.3);
+            transform: scale(1.4) !important;
             z-index: 10;
-            box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 1) !important;
             opacity: 1.0 !important;
         }
 
         .dot.dimmed {
-            opacity: 0.2;
+            opacity: 0.15;
         }
 
         .empty-dot { 
@@ -228,7 +230,7 @@
             <div class="bg-transparent border-none rounded-xl px-1 py-1 w-full h-[75px] flex items-center justify-between gap-2 transition-all duration-300" id="dashboard-card">
                 
                 <div class="flex flex-col items-start justify-center min-w-0 flex-1">
-                    <p class="font-mono text-[9px] font-bold tracking-widest uppercase text-neutral-500 min-h-[13px] transition-colors text-left" id="dashboard-subtitle">TODAY</p>
+                    <p class="font-mono text-[9px] font-bold tracking-tight uppercase text-neutral-500 min-h-[13px] transition-colors text-left" id="dashboard-subtitle">TODAY</p>
                     <div class="flex items-center justify-start mt-0.5 w-full shrink-0">
                         <span class="font-sans text-2xl xs:text-3xl font-black text-white select-none transition-all duration-200 tracking-tight" id="year-label">2026.05.24.</span>
                     </div>
@@ -242,7 +244,8 @@
 
                     <div onclick="toggleProgressMode()" class="flex items-center gap-2 bg-neutral-900/80 border border-neutral-800/80 px-2.5 py-1.5 rounded-full cursor-pointer hover:bg-neutral-800/50 active:scale-98 transition-all select-none h-[28px]" id="metric-box" title="클릭하여 남은 비율 보기">
                         <span class="font-sans text-xs xs:text-sm font-extrabold text-white transition-colors tracking-tight leading-none" id="progress-percent">00%</span>
-                        <span class="w-[1px] h-2.5 bg-neutral-800 transition-colors" id="progress-divider"></span> <span class="font-mono text-[8px] text-neutral-400 font-bold uppercase transition-colors tracking-wider leading-none shrink-0" id="progress-suffix">Passed</span>
+                        <span class="w-[1px] h-2.5 bg-neutral-800 transition-colors" id="progress-divider"></span>
+                        <span class="font-mono text-[8px] text-neutral-400 font-bold uppercase transition-colors tracking-wider leading-none shrink-0" id="progress-suffix">Passed</span>
                     </div>
                 </div>
                 
@@ -340,12 +343,19 @@
             allDots.forEach(dot => {
                 dot.classList.remove('dimmed');
                 dot.classList.remove('touch-hovering');
+                dot.style.transform = '';
+                dot.style.boxShadow = '';
             });
         }
 
+        // 특정 날짜 도트 터치 집중 모드 트리거
         function triggerTemporaryFocus(targetDot, dateStr, dayIndex, percent) {
             if (restoreTimer) clearTimeout(restoreTimer);
-            if (activeFocusedDot) activeFocusedDot.classList.remove('touch-hovering');
+            
+            const allContainers = mainViewSection.querySelectorAll('.month-container');
+            allContainers.forEach(c => c.classList.remove('temp-focus-month'));
+
+            undimAllDots();
 
             activeFocusedDot = targetDot;
             targetDot.classList.add('touch-hovering');
@@ -353,13 +363,23 @@
             
             dimOtherDots(targetDot);
 
+            const isLeap = (displayedYear % 4 === 0 && displayedYear % 100 !== 0) || (displayedYear % 400 === 0);
+            const totalDays = isLeap ? 366 : 365;
+            const remainingDays = totalDays - dayIndex;
+
             const numericPercent = parseFloat(percent);
             let displayPercent = (displayProgressMode === 'remaining') ? 100 - numericPercent : numericPercent;
             let focusSuffix = (displayProgressMode === 'remaining') ? "Remaining" : "Passed";
 
-            dashboardSubtitle.textContent = `DAY OF YEAR: ${dayIndex}`;
+            // [핵심 변경] Passed / Remaining 여부에 따라 가변적인 상단 알림 텍스트 주입
+            if (displayProgressMode === 'passed') {
+                dashboardSubtitle.textContent = `You've spent ${dayIndex} days of the year!`;
+            } else {
+                dashboardSubtitle.textContent = `You have ${remainingDays} days left of the year!`;
+            }
+
             const focusTextColorClass = getThemeTextClass();
-            dashboardSubtitle.className = `font-mono text-[9px] font-bold tracking-widest uppercase truncate min-h-[13px] transition-colors text-left ${focusTextColorClass}`;
+            dashboardSubtitle.className = `font-mono text-[9px] font-bold tracking-tight uppercase truncate min-h-[13px] transition-colors text-left ${focusTextColorClass}`;
             
             yearLabel.textContent = dateStr;
             progressPercent.textContent = `${formatPercent(displayPercent)}%`;
@@ -378,17 +398,36 @@
             restoreTimer = setTimeout(restoreDefaultDisplay, 2000);
         }
 
+        // 11개 월의 빈 컨테이너 영역 터치 시 2초간 번쩍이고 꺼지는 기능
+        function triggerMonthContainerFocus(containerElement) {
+            if (containerElement.classList.contains('active-month')) return;
+
+            if (restoreTimer) clearTimeout(restoreTimer);
+            restoreDefaultDisplay();
+
+            containerElement.classList.add('temp-focus-month');
+            restoreTimer = setTimeout(restoreDefaultDisplay, 2000);
+        }
+
+        // 전체 대시보드 상태 원복 및 잔상 완벽 제거
         function restoreDefaultDisplay() {
             undimAllDots();
+            
             if (activeFocusedDot) {
-                // 강조 및 후광 상태 클래스를 완벽히 제거하여 2초 뒤 확대 잔상 버그 해결
                 activeFocusedDot.classList.remove('touch-hovering');
+                activeFocusedDot.style.transform = '';
+                activeFocusedDot.style.boxShadow = '';
                 activeFocusedDot = null;
             }
             activeFocusedDotData = null;
 
+            const allContainers = mainViewSection.querySelectorAll('.month-container');
+            allContainers.forEach(container => {
+                container.classList.remove('temp-focus-month');
+            });
+
             dashboardSubtitle.textContent = defaultSubtitleText;
-            dashboardSubtitle.className = "font-mono text-[9px] text-neutral-500 font-bold tracking-widest uppercase truncate min-h-[13px] transition-colors text-left";
+            dashboardSubtitle.className = "font-mono text-[9px] text-neutral-500 font-bold tracking-tight uppercase truncate min-h-[13px] transition-colors text-left";
 
             yearLabel.textContent = defaultYearText;
             
@@ -423,15 +462,18 @@
             const startOfYear = new Date(actualYear, 0, 1);
             const diff = actualToday - startOfYear;
             const dayOfYear = Math.floor(diff / (1000 * 60 * 60 * 24)) + 1;
+            const remainingDays = totalDays - dayOfYear;
             const basePassedPercentage = (dayOfYear / totalDays) * 100;
-            defaultSubtitleText = "TODAY";
 
+            // [핵심 변경] 오늘 날짜 대시보드의 평상시 디폴트 가변 텍스트 정의
             if (displayProgressMode === 'passed') {
                 defaultPercentageText = formatPercent(basePassedPercentage);
                 defaultSuffixText = "Passed";
+                defaultSubtitleText = `You've spent ${dayOfYear} days of this year!`;
             } else {
                 defaultPercentageText = formatPercent(100 - basePassedPercentage);
                 defaultSuffixText = "Remaining";
+                defaultSubtitleText = `You have ${remainingDays} days left of this year!`;
             }
 
             yearLabel.textContent = defaultYearText;
@@ -460,6 +502,13 @@
                 const monthDiv = document.createElement('div');
                 monthDiv.className = (m === activeMonthIndex) ? 'month-container active-month' : 'month-container';
                 
+                monthDiv.addEventListener('click', (e) => {
+                    triggerMonthContainerFocus(monthDiv);
+                });
+                monthDiv.addEventListener('touchstart', (e) => {
+                    triggerMonthContainerFocus(monthDiv);
+                });
+
                 const headerDiv = document.createElement('div');
                 headerDiv.classList.add('month-name');
 
@@ -504,6 +553,7 @@
 
                     const runTrigger = (e) => {
                         e.preventDefault();
+                        e.stopPropagation(); 
                         triggerTemporaryFocus(dot, formattedDate, curDayIndex, curPercent);
                     };
 
